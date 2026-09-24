@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="JobHub — сервис поиска работы и сотрудников. Тысячи вакансий с фильтрами по отрасли, зарплате и опыту.">
+  <title>JobHub — найди работу мечты</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- Шрифт Manrope -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Кастомные стили -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body data-page="index">
+
+  <!-- ================= ШАПКА ================= -->
+  <header class="site-header sticky-top">
+    <nav class="navbar navbar-expand-lg py-2">
+      <div class="container">
+        <a class="navbar-brand" href="index.html"><i class="bi bi-briefcase-fill"></i>Job<span>Hub</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                aria-controls="mainNav" aria-expanded="false" aria-label="Открыть меню">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-3 gap-lg-1">
+            <li class="nav-item"><a class="nav-link" data-nav="index" href="index.html">Главная</a></li>
+            <li class="nav-item"><a class="nav-link" data-nav="jobs" href="jobs.html">Вакансии</a></li>
+            <li class="nav-item"><a class="nav-link" data-nav="employer" href="employer.html">Работодателям</a></li>
+          </ul>
+          <div class="d-flex align-items-center gap-2" id="navUser"></div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ================= ГЕРОЙ С ПОИСКОМ ================= -->
+    <section class="hero">
+      <div class="container">
+        <div class="row justify-content-center text-center">
+          <div class="col-lg-9">
+            <p class="hero-chip d-inline-flex mb-4"><i class="bi bi-stars me-2"></i>1400+ актуальных вакансий на JobHub</p>
+            <h1 class="display-4 fw-bold mb-3">Найдите работу,<br>которая вам подходит</h1>
+            <p class="lead mb-4">
+              Вакансии в IT, финансах, маркетинге и других отраслях.
+              Фильтруйте по зарплате и опыту, откликайтесь в один клик.
+            </p>
+
+            <!-- Форма быстрого поиска -->
+            <form id="heroSearchForm" class="hero-search mb-4" role="search" aria-label="Поиск вакансий">
+              <div class="flex-grow-1 d-flex align-items-center px-3">
+                <i class="bi bi-search text-muted me-2"></i>
+                <input type="search" class="form-control form-control-lg border-0" name="q"
+                       placeholder="Должность, компания или город" aria-label="Ключевое слово">
+              </div>
+              <select class="form-select form-select-lg" name="industry" aria-label="Отрасль" style="max-width:230px">
+                <option value="">Все отрасли</option>
+                <option value="IT и разработка">IT и разработка</option>
+                <option value="Финансы">Финансы</option>
+                <option value="Маркетинг и PR">Маркетинг и PR</option>
+                <option value="Дизайн">Дизайн</option>
+                <option value="Продажи">Продажи</option>
+                <option value="HR и рекрутинг">HR и рекрутинг</option>
+                <option value="Производство">Производство</option>
+                <option value="Логистика">Логистика</option>
+                <option value="Образование">Образование</option>
+              </select>
+              <button type="submit" class="btn btn-brand btn-lg px-4">
+                Найти <i class="bi bi-arrow-right ms-1"></i>
+              </button>
+            </form>
+
+            <div class="d-flex flex-wrap justify-content-center gap-2 mb-5">
+              <a class="hero-chip" href="jobs.html?industry=IT%20и%20разработка">IT и разработка</a>
+              <a class="hero-chip" href="jobs.html?industry=Финансы">Финансы</a>
+              <a class="hero-chip" href="jobs.html?industry=Маркетинг%20и%20PR">Маркетинг</a>
+              <a class="hero-chip" href="jobs.html?industry=Дизайн">Дизайн</a>
+              <a class="hero-chip" href="jobs.html">Все вакансии</a>
+            </div>
+
+            <div class="hero-stats justify-content-center">
+              <div><div class="num">1400+</div><div class="lbl">вакансий</div></div>
+              <div><div class="num">850</div><div class="lbl">компаний</div></div>
+              <div><div class="num">12 000</div><div class="lbl">соискателей</div></div>
+              <div><div class="num">92%</div><div class="lbl">находят работу</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= КАК ЭТО РАБОТАЕТ ================= -->
+    <section class="section" aria-labelledby="how-title">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span class="eyebrow mb-3">Просто</span>
+          <h2 class="section-title h1" id="how-title">Как это работает</h2>
+          <p class="section-subtitle mx-auto">Три шага — и вы на собеседовании в компании мечты.</p>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="feature-card">
+              <div class="d-flex align-items-center gap-3 mb-3">
+                <span class="step-num">1</span>
+                <h3 class="h5 fw-bold mb-0">Создайте резюме</h3>
+              </div>
+              <p class="text-muted mb-0">Зарегистрируйтесь и заполните профиль: навыки, опыт и образование — за 5 минут.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="feature-card">
+              <div class="d-flex align-items-center gap-3 mb-3">
+                <span class="step-num">2</span>
+                <h3 class="h5 fw-bold mb-0">Найдите вакансию</h3>
+              </div>
+              <p class="text-muted mb-0">Воспользуйтесь фильтрами по отрасли, зарплате, опыту и формату работы.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="feature-card">
+              <div class="d-flex align-items-center gap-3 mb-3">
+                <span class="step-num">3</span>
+                <h3 class="h5 fw-bold mb-0">Откликнитесь</h3>
+              </div>
+              <p class="text-muted mb-0">Отправьте отклик в один клик и следите за его статусом в личном кабинете.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ПРЕИМУЩЕСТВА ================= -->
+    <section class="section bg-white border-top border-bottom" style="--bs-border-color:#eef2ff" aria-labelledby="feat-title">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span class="eyebrow mb-3">Почему JobHub</span>
+          <h2 class="section-title h1" id="feat-title">Удобно всем</h2>
+        </div>
+        <div class="row g-4">
+          <div class="col-sm-6 col-lg-3">
+            <div class="feature-card">
+              <span class="feature-icon bg-violet"><i class="bi bi-sliders"></i></span>
+              <h3 class="h6 fw-bold">Точные фильтры</h3>
+              <p class="small text-muted mb-0">Поиск по отрасли, вилке зарплаты, опыту и формату работы.</p>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-3">
+            <div class="feature-card">
+              <span class="feature-icon bg-cyan"><i class="bi bi-lightning-charge"></i></span>
+              <h3 class="h6 fw-bold">Отклик в 1 клик</h3>
+              <p class="small text-muted mb-0">Резюме уходит работодателю автоматически, без лишних шагов.</p>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-3">
+            <div class="feature-card">
+              <span class="feature-icon bg-green"><i class="bi bi-bell"></i></span>
+              <h3 class="h6 fw-bold">Статусы откликов</h3>
+              <p class="small text-muted mb-0">Всегда видно: рассмотрение, приглашение или отказ.</p>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-3">
+            <div class="feature-card">
+              <span class="feature-icon bg-orange"><i class="bi bi-buildings"></i></span>
+              <h3 class="h6 fw-bold">Для бизнеса</h3>
+              <p class="small text-muted mb-0">Работодатели публикуют вакансии и управляют откликами в кабинете.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ПОПУЛЯРНЫЕ ВАКАНСИИ ================= -->
+    <section class="section" aria-labelledby="popular-title">
+      <div class="container">
+        <div class="d-flex flex-wrap align-items-end justify-content-between gap-3 mb-4">
+          <div>
+            <span class="eyebrow mb-2">Свежие предложения</span>
+            <h2 class="section-title h1" id="popular-title">Популярные вакансии</h2>
+          </div>
+          <a href="jobs.html" class="btn btn-outline-brand">Все вакансии <i class="bi bi-arrow-right ms-1"></i></a>
+        </div>
+        <div class="row g-3" id="popularJobs"></div>
+      </div>
+    </section>
+
+    <!-- ================= CTA ================= -->
+    <section class="section pt-0" aria-label="Регистрация">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <div class="feature-card p-4" style="background:linear-gradient(135deg,#eef2ff,#e0f2fe)">
+              <span class="feature-icon bg-violet"><i class="bi bi-person-badge"></i></span>
+              <h2 class="h4 fw-bold">Ищете работу?</h2>
+              <p class="text-muted mb-3">Создайте резюме и получайте отклики от работодателей, следите за статусами откликов.</p>
+              <a href="register.html" class="btn btn-brand"><i class="bi bi-person-plus me-2"></i>Создать резюме</a>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="feature-card p-4" style="background:linear-gradient(135deg,#ecfeff,#eef2ff)">
+              <span class="feature-icon bg-cyan"><i class="bi bi-briefcase"></i></span>
+              <h2 class="h4 fw-bold">Ищете сотрудников?</h2>
+              <p class="text-muted mb-3">Публикуйте вакансии, управляйте откликами и нанимайте лучших специалистов.</p>
+              <a href="employer.html" class="btn btn-outline-brand"><i class="bi bi-megaphone me-2"></i>Разместить вакансию</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= ПОДВАЛ ================= -->
+  <footer class="site-footer">
+    <div class="container py-5">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="footer-brand mb-2"><i class="bi bi-briefcase-fill me-1"></i>JobHub</div>
+          <p class="small">Сервис для поиска работы и сотрудников. Учебный проект в рамках лабораторной работы №1 по курсу «Фронтенд-разработка» Университета ИТМО.</p>
+        </div>
+        <div class="col-6 col-lg-2">
+          <div class="footer-title mb-3">Соискателям</div>
+          <ul class="list-unstyled small d-grid gap-2 mb-0">
+            <li><a href="jobs.html">Поиск вакансий</a></li>
+            <li><a href="profile.html">Моё резюме</a></li>
+            <li><a href="register.html">Регистрация</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-lg-2">
+          <div class="footer-title mb-3">Работодателям</div>
+          <ul class="list-unstyled small d-grid gap-2 mb-0">
+            <li><a href="employer.html">Кабинет работодателя</a></li>
+            <li><a href="login.html">Вход</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4">
+          <div class="footer-title mb-3">Контакты</div>
+          <ul class="list-unstyled small d-grid gap-2 mb-0">
+            <li><i class="bi bi-envelope me-2"></i>support@jobhub.example.ru</li>
+            <li><i class="bi bi-telephone me-2"></i>+7 (800) 555-35-35</li>
+            <li><i class="bi bi-geo-alt me-2"></i>Санкт-Петербург, Кронверкский пр., 49</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom py-3">
+      <div class="container d-flex flex-wrap justify-content-between small">
+        <span>© 2026 JobHub. Все права защищены.</span>
+        <span>Сделано на HTML, CSS и Bootstrap</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= МОДАЛЬНОЕ ОКНО ВХОДА ================= -->
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title fs-5 fw-bold" id="loginModalLabel"><i class="bi bi-box-arrow-in-right me-2 text-primary"></i>Вход в аккаунт</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+        <div class="modal-body">
+          <div class="alert alert-danger py-2 small" id="quickLoginAlert" role="alert" hidden></div>
+          <form id="quickLoginForm" novalidate>
+            <div class="mb-3">
+              <label for="qEmail" class="form-label">Email</label>
+              <input type="email" class="form-control" id="qEmail" name="email" placeholder="user@demo.ru" required>
+            </div>
+            <div class="mb-3">
+              <label for="qPassword" class="form-label">Пароль</label>
+              <div class="password-wrapper">
+                <input type="password" class="form-control" id="qPassword" name="password" placeholder="••••••" required>
+                <button type="button" class="password-toggle" data-password-toggle="qPassword" aria-label="Показать пароль"><i class="bi bi-eye"></i></button>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-brand w-100">Войти</button>
+          </form>
+          <hr>
+          <div class="small text-muted mb-2">Быстрый вход с демо-данными:</div>
+          <div class="d-grid gap-2">
+            <button type="button" class="btn btn-light-soft btn-sm" data-fill-demo="candidate">
+              <i class="bi bi-person me-1"></i>Соискатель · user@demo.ru
+            </button>
+            <button type="button" class="btn btn-light-soft btn-sm" data-fill-demo="employer">
+              <i class="bi bi-building me-1"></i>Работодатель · hr@demo.ru
+            </button>
+          </div>
+        </div>
+        <div class="modal-footer justify-content-center py-2">
+          <span class="small text-muted">Нет аккаунта? <a href="register.html">Зарегистрируйтесь</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Скрипты -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Выводим популярные вакансии на главной
+    document.addEventListener('DOMContentLoaded', () => {
+      const popular = VacancyStore.active()
+        .sort((a, b) => new Date(b.postedAt) - new Date(a.postedAt))
+        .slice(0, 3);
+
+      document.getElementById('popularJobs').innerHTML = popular.map((v) => {
+        const fmt = FORMAT_OPTIONS.find((o) => o.value === v.format);
+        return `
+          <div class="col-md-4">
+            <article class="job-card d-flex flex-column">
+              <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                <h3 class="job-title h6 mb-0"><a href="job.html?id=${encodeURIComponent(v.id)}">${esc(v.title)}</a></h3>
+              </div>
+              <div class="company-chip small mb-1">
+                <span class="avatar-circle" style="width:26px;height:26px;font-size:0.65rem;background:${colorForName(v.company.name)}">${initials(v.company.name)}</span>
+                ${esc(v.company.name)}
+              </div>
+              <p class="salary-line small mb-2">${salaryText(v.salaryMin, v.salaryMax)}</p>
+              <div class="d-flex flex-wrap gap-1 mb-2">
+                <span class="badge badge-soft badge-industry">${esc(v.industry)}</span>
+                ${fmt ? `<span class="badge badge-soft badge-format">${fmt.label}</span>` : ''}
+                <span class="badge badge-soft badge-location"><i class="bi bi-geo-alt me-1"></i>${esc(v.location)}</span>
+              </div>
+              <a href="job.html?id=${encodeURIComponent(v.id)}" class="mt-auto small fw-semibold">
+                Подробнее <i class="bi bi-arrow-right"></i>
+              </a>
+            </article>
+          </div>`;
+      }).join('');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Регистрация на JobHub: аккаунт соискателя или работодателя.">
+  <title>Регистрация — JobHub</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body data-page="register">
+
+  <!-- ================= ШАПКА ================= -->
+  <header class="site-header sticky-top">
+    <nav class="navbar navbar-expand-lg py-2">
+      <div class="container">
+        <a class="navbar-brand" href="index.html"><i class="bi bi-briefcase-fill"></i>Job<span>Hub</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                aria-controls="mainNav" aria-expanded="false" aria-label="Открыть меню">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-3 gap-lg-1">
+            <li class="nav-item"><a class="nav-link" data-nav="index" href="index.html">Главная</a></li>
+            <li class="nav-item"><a class="nav-link" data-nav="jobs" href="jobs.html">Вакансии</a></li>
+            <li class="nav-item"><a class="nav-link" data-nav="employer" href="employer.html">Работодателям</a></li>
+          </ul>
+          <div class="d-flex align-items-center gap-2" id="navUser"></div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="auth-page">
+    <div class="container">
+      <div class="row justify-content-center g-4">
+        <!-- Левая колонка: приветствие -->
+        <div class="col-lg-5 d-none d-lg-block">
+          <div class="auth-sidebar">
+            <span class="feature-icon bg-white bg-opacity-10 mb-3" style="color:#fff">
+              <i class="bi bi-person-plus fs-3"></i>
+            </span>
+            <p class="quote mb-3">Присоединяйтесь к сообществу из 12 000 соискателей и 850 компаний.</p>
+            <ul class="list-unstyled small mb-4 d-grid gap-2" style="color:rgba(255,255,255,0.85)">
+              <li><i class="bi bi-check-circle-fill me-2"></i>Бесплатное резюме и отклики</li>
+              <li><i class="bi bi-check-circle-fill me-2"></i>Фильтры по отрасли, зарплате и опыту</li>
+              <li><i class="bi bi-check-circle-fill me-2"></i>Кабинет работодателя с управлением вакансиями</li>
+            </ul>
+            <a href="login.html" class="btn btn-light fw-semibold w-100">
+              Уже есть аккаунт? Войти <i class="bi bi-arrow-right ms-1"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Правая колонка: форма регистрации -->
+        <div class="col-lg-5">
+          <div class="auth-card">
+            <div class="text-center mb-4">
+              <span class="brand-mark mb-3"><i class="bi bi-briefcase-fill"></i></span>
+              <h1 class="h3 fw-bold mt-3 mb-1">Создать аккаунт</h1>
+              <p class="text-muted small mb-0">Это займёт меньше минуты</p>
+            </div>
+
+            <div class="alert alert-danger py-2 small" id="registerAlert" role="alert" hidden></div>
+
+            <form id="registerForm" novalidate>
+              <!-- Выбор роли -->
+              <div class="mb-3">
+                <label class="form-label">Я регистрируюсь как</label>
+                <div class="d-flex gap-2">
+                  <div class="form-check flex-fill">
+                    <input class="form-check-input" type="radio" name="role" id="roleCandidate" value="candidate" checked>
+                    <label class="form-check-label border rounded-3 p-2 w-100 text-center fw-semibold" for="roleCandidate">
+                      <i class="bi bi-person me-1"></i>Соискатель
+                    </label>
+                  </div>
+                  <div class="form-check flex-fill">
+                    <input class="form-check-input" type="radio" name="role" id="roleEmployer" value="employer">
+                    <label class="form-check-label border rounded-3 p-2 w-100 text-center fw-semibold" for="roleEmployer">
+                      <i class="bi bi-building me-1"></i>Работодатель
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="regName" class="form-label">Имя и фамилия</label>
+                <input type="text" class="form-control form-control-lg" id="regName" name="name"
+                       placeholder="Анна Смирнова" autocomplete="name" required>
+              </div>
+
+              <div class="mb-3 d-none" id="companyField">
+                <label for="company" class="form-label">Название компании</label>
+                <input type="text" class="form-control form-control-lg" id="company" name="company"
+                       placeholder="ООО «ТехноСофт»">
+              </div>
+
+              <div class="mb-3">
+                <label for="regEmail" class="form-label">Email</label>
+                <input type="email" class="form-control form-control-lg" id="regEmail" name="email"
+                       placeholder="you@example.ru" autocomplete="email" required>
+              </div>
+
+              <div class="row g-3 mb-4">
+                <div class="col-md-6">
+                  <label for="regPassword" class="form-label">Пароль</label>
+                  <div class="password-wrapper">
+                    <input type="password" class="form-control form-control-lg" id="regPassword" name="password"
+                           placeholder="Минимум 6 символов" autocomplete="new-password" required>
+                    <button type="button" class="password-toggle" data-password-toggle="regPassword" aria-label="Показать пароль">
+                      <i class="bi bi-eye"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label for="regPassword2" class="form-label">Повторите пароль</label>
+                  <div class="password-wrapper">
+                    <input type="password" class="form-control form-control-lg" id="regPassword2" name="password2"
+                           placeholder="Ещё раз" autocomplete="new-password" required>
+                    <button type="button" class="password-toggle" data-password-toggle="regPassword2" aria-label="Показать пароль">
+                      <i class="bi bi-eye"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-check mb-4">
+                <input class="form-check-input" type="checkbox" id="agreement" required>
+                <label class="form-check-label small" for="agreement">
+                  Я принимаю условия пользовательского соглашения и политику обработки персональных данных
+                </label>
+              </div>
+
+              <button type="submit" class="btn btn-brand w-100 btn-lg">
+                <i class="bi bi-person-plus me-2"></i>Зарегистрироваться
+              </button>
+            </form>
+
+            <p class="text-center small text-muted mt-4 mb-0">
+              Уже есть аккаунт? <a href="login.html" class="fw-semibold">Войти</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ================= ПОДВАЛ ================= -->
+  <footer class="site-footer mt-0">
+    <div class="container py-4">
+      <div class="row g-3 align-items-center">
+        <div class="col-md-6">
+          <div class="footer-brand mb-1"><i class="bi bi-briefcase-fill me-1"></i>JobHub</div>
+          <p class="small mb-0">Сервис поиска работы и сотрудников · учебный проект ИТМО</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <a href="jobs.html" class="me-3">Вакансии</a>
+          <a href="login.html">Вход</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom py-3">
+      <div class="container small">© 2026 JobHub. Все права защищены.</div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>
